@@ -144,10 +144,15 @@ def run_game_socketed(conn):
 
 def handle_client(conn, addr):
     print(f"Connection from {addr}")
-    try:
-        run_game_socketed(conn)
-        conn.close()
-        print(f"Closed connection from {addr}")
+    try: 
+        try:
+            run_game_socketed(conn)
+            conn.close()
+            print(f"Closed connection from {addr}")
+        except Exception as e:
+            print(e)
+            conn.close()
+            print(f"Closed connection from {addr}")
     except:
         pass
 
