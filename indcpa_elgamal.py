@@ -159,7 +159,7 @@ def handle_client(conn, addr):
 if __name__ == "__main__":
     # TODO: add socket/thread handler that runs game and then closes socket on return
     HOST = "0.0.0.0"   # listen on all interfaces
-    PORT = 9010
+    PORT = 9999
     print(f"[*] Listening on port {PORT}...")
     with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
         s.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
