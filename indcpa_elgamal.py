@@ -8,7 +8,7 @@ import threading
 from typing import Tuple
 
 SLEEP_TIME = 1
-N_CORRECT = 2
+N_CORRECT = 20
 FLAG = "tkctf{ind-cpa_is_gr8!}"
 
 # Types
@@ -124,7 +124,7 @@ def run_game_socketed(conn):
             c = encrypt(pub_key, m1_enc)
         else:
             c = encrypt(pub_key, m0_enc)
-        c = int_to_bytes(decrypt(priv_key, c))
+        #c = int_to_bytes(decrypt(priv_key, c))
         conn.sendall(f"Here is your ciphertext: {c}\n".encode())
         conn.sendall(f"Choose 0 if this ciphertext is from message 0 or 1 for message 1:\n".encode())
         choice = conn.recv(4096).strip()
