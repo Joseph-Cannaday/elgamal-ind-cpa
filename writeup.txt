@@ -1,0 +1,19 @@
+This challenge is based on the classic IND-CPA game. The goal is to demonstrate that for our scheme, ElGamal in Zp*, the scheme is not IND-CPA secure.
+While for Elliptic Curve groups the scheme is IND-CPA secure, for Zp*, it is proven that the legendre symbol is the same for a message and its ciphertext.
+We can compute the legendre symbol for a with respect to p in python with:
+
+```
+def legendre(a,p):
+    leg = pow(a,(p-1)//2, p)
+    if leg == p-1:
+        return -1
+    else:
+        return leg
+
+```
+Note that the game gives us p, which makes this approach valid.
+
+Then, it is just a matter of choosing m0 and m1 such that one is a square(legendre returns 1) and one is a non-square(legendre returns -1).
+We use "1" and "3" as our chosen plaintexts(ascii 49, which is a square, and ascii 51 which is non square).
+Then, for each round of the game, we simply compute legendre of the second number in the ciphertext pair, which should correspond to either m0 or m1.
+We do this 20 times, since the game says that we must get the answer right 20 times to win, and we get the flag.
