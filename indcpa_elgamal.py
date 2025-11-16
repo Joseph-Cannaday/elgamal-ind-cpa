@@ -157,7 +157,6 @@ def handle_client(conn, addr):
         pass
 
 if __name__ == "__main__":
-    # TODO: add socket/thread handler that runs game and then closes socket on return
     HOST = "0.0.0.0"   # listen on all interfaces
     PORT = 9999
     print(f"[*] Listening on port {PORT}...")
