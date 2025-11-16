@@ -91,8 +91,8 @@ def choose_bit():
 def run_game_socketed(conn):
     conn.sendall(f"Lets play a game!\nChoose the correct answer {N_CORRECT} times to win a flag!\n".encode())
     # key secrets p(safe prime) and g(its generator)
-    p = 208351617316091241234326746312124448251235562226470491514186331217050270460481
-    g = 2
+    p = 10139066926858385756187484286364701599808424881450583134737150763581531347687325747959137390370884128287547987707988989053849804317255369695920315311209841
+    g = 29
     pub_key,priv_key = keygen(p,g)
     correct_answers = 0
 
@@ -159,7 +159,7 @@ def handle_client(conn, addr):
 if __name__ == "__main__":
     # TODO: add socket/thread handler that runs game and then closes socket on return
     HOST = "0.0.0.0"   # listen on all interfaces
-    PORT = 1234
+    PORT = 9010
     print(f"[*] Listening on port {PORT}...")
     with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
         s.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
